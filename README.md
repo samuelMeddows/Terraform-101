@@ -111,7 +111,7 @@ Run terrform apply
 Even though marked as sensitive, we can still view the API output
 `terraform output api_key`
 
-warning: **Sec Note:** ⚠️
+⚠️ **Sec Note:**
 
 1. Only execute terraform from a trusted machine.
 2. Employ terrfrom state backends that use data encryption.
@@ -139,7 +139,7 @@ Run a BASH script that exports an environment variable.
 <u>Terrform specifc syntax</u>
 `BASH: export TF_VAR_api_key="sk-ce3d27f9-025d-47cd-9986-898f13127486"`
 
-💡 **Sec Note:** Ensure sensitive variable scripts NEVER get commited.
+⚠️ **Sec Note:** Ensure sensitive variable scripts NEVER get commited.
 
 ### Input Variable Value Selection Order
 
@@ -151,5 +151,3 @@ Order of Terraform variable Lookup
    2. anything.auto.tfvar
 3. -var -var-file command line options
 4. Manual input
-
-Check

@@ -16,34 +16,42 @@ This is an overview course of Terraform with labs for orchatrarting azure cloud.
 ### Inputs
 
 [variables.tf](lab1-fundamentals/variables.tf)
+
 ![Input variables screen shot](img/inputs.png)
 
 ### Outputs
 
 [outputs.tf](lab1-fundamentals/outputs.tf)
+
 ![Output variables screen shot](img/outputs.png)
 
 ### String Interpolation
 
 Allows to concatenate strings together, in a highly readable way
 [main.tf](lab1-fundamentals/main.tf)
+
 ![String interpolation screen shot](img/interpolation.png)
 
 ### Defining Required Providers
 
 [versions.tf](lab1-fundamentals/versions.tf)
+
 ![Required providers screen shot](img/required_providers.png)
 
 ### Referencing Resource Outputs
 
 [outputs.tf](lab1-fundamentals/outputs.tf)
+
 ![Outputs screen shot](img/rro-outputs.png)
+
 [main.tf](lab1-fundamentals/main.tf)
+
 ![main file screen shot](img/rro-main.png)
 
 ### Default Variable Files
 
 [default.auto.tfvars](lab1-fundamentals/default.auto.tfvars)
+
 ![defaut vars screen shot](img/auto-tvarfs.png)
 
 ### Using Input Variable Files for Environment Configuration
@@ -54,8 +62,11 @@ Note: Terraform needs the dev var file added into the command
 `terraform apply -var-file dev.tfvars`
 
 [default.auto.tfvars](lab1-fundamentals/default.auto.tfvarsf)
+
 ![alt text](img/ec-default.auto.tfvars.png)
+
 [dev.tfvars](lab1-fundamentals/env/dev.tfvars)
+S
 ![alt text](img/ec-dev.tfvars.png)
 
 ### Managing Input Variable Files for Multiple Environments

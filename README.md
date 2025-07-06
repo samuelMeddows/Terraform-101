@@ -15,18 +15,18 @@ This is an overview course of Terraform with labs for orchatrarting azure cloud.
 
 ### Inputs
 
-[variables.tf](Lab1/Lab1/variables.tf)
+[variables.tf](Lab1/variables.tf)
 ![Input variables screen shot](img/inputs.png)
 
 ### Outputs
 
-[outputs.tf](Lab1/Lab1/outputs.tf)
+[outputs.tf](Lab1/outputs.tf)
 ![Output variables screen shot](img/outputs.png)
 
 ### String Interpolation
 
 Allows to concatenate strings together, in a highly readable way
-[main.tf](Lab1/Lab1/main.tf)
+[main.tf](Lab1/main.tf)
 ![String interpolation screen shot](img/interpolation.png)
 
 ### Defining Required Providers

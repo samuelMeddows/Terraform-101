@@ -66,7 +66,7 @@ Note: Terraform needs the dev var file added into the command
 ![alt text](img/ec-default.auto.tfvars.png)
 
 [dev.tfvars](lab1-fundamentals/env/dev.tfvars)
-S
+
 ![alt text](img/ec-dev.tfvars.png)
 
 ### Managing Input Variable Files for Multiple Environments
@@ -116,3 +116,5 @@ Sec Note:
 1. Only execute terraform from a trusted machine.
 2. Employ terrfrom state backends that use data encryption.
 3. Principle of least privledge is applied to state files.
+
+### Passing Input Variable Values using Environment Variables using PowerShell

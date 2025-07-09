@@ -18,3 +18,11 @@ output "api_key" {
     value = var.api_key
     sensitive = true # This will ensure the API key is not displayed in the output
 }
+
+output "primary_region" {
+    value = var.regions[0]
+}
+
+output "primary_region_instace" {
+    value = var.region_instant_count[var.regions[0]]
+}

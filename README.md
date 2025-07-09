@@ -149,5 +149,52 @@ Order of Terraform variable Lookup
 2. Default Terraform tfvar files
    1. terraform.trvars
    2. anything.auto.tfvar
-3. -var -var-file command line options
+3. -var and -var-file command line options
 4. Manual input
+
+### Input Variable Types
+
+Decleare variable types within the variables.tf file.
+
+```
+variable "enabled" {
+  type = bool
+}
+```
+
+#### Collection typer
+
+<u>List</u>
+
+variables.tf
+
+```
+variable "list"{
+  type = list(string)
+}
+```
+
+prod.tfavrs
+
+```
+regions = ["us-east-1", "us-west-2"]
+```
+
+<u>Map</u>
+Maps a great for delcaring how many instances of a resource you want in each region.
+variables.tf
+
+```
+variable "region_instant_count" {
+  type = map(string)
+}
+```
+
+prod.tfavrs
+
+```
+region_instant_count = {
+  "us-east-1" = 4
+  "us-west-2" = 8
+}
+```

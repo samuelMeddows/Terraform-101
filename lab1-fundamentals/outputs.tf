@@ -26,3 +26,7 @@ output "primary_region" {
 output "primary_region_instace" {
     value = var.region_instant_count[var.regions[0]]
 }
+
+output "kind" {
+    value = var.sku_settings.kind
+}

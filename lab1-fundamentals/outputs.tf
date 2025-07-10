@@ -30,3 +30,7 @@ output "primary_region_instace" {
 output "kind" {
     value = var.sku_settings.kind
 }
+
+output random_module {
+    value = module.random_module.random_string
+}

@@ -1,3 +1,9 @@
+
+// Application Name
+# Application Name
+/*
+  Application Name
+*/
 variable application_name {
   type = string
 

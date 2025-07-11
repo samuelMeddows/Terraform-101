@@ -42,3 +42,8 @@ module "random_module" {
   source  = "hashicorp/module/random"
   version = "1.0.0"
 }
+
+module "local_random_module" {
+  source = "./modules/rando"
+  length = 6
+}

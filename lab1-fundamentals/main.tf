@@ -17,33 +17,18 @@ locals {
   environment_prefix = "${var.environment_name}-${var.application_name}-${random_string.suffix.result}"
 }
 
-resource "random_string" "list" {
-  count = length(var.regions)
-  length  = 6
-  upper   = false
-  special = false
+module "regionA" {
+  source = "./modules/regional-stamp"
+  region = "eastus"
+  name   = "foo"
+  min_node_count = 4
+  max_node_count = 8
 }
 
-resource "random_string" "map" {
-  for_each = var.region_instant_count
-  length  = 6
-  upper   = false
-  special = false
-}
-
-resource "random_string" "if" {
-  count = var.enabled ? 1 : 0
-  length  = 6
-  upper  = false
-  special = false
-}
-
-module "random_module" {
-  source  = "hashicorp/module/random"
-  version = "1.0.0"
-}
-
-module "local_random_module" {
-  source = "./modules/rando"
-  length = 6
+module "regionB" {
+  source = "./modules/regional-stamp"
+  region = "westus"
+  name   = "kung"
+  min_node_count = 4
+  max_node_count = 8
 }

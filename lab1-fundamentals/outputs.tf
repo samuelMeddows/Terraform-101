@@ -31,6 +31,10 @@ output "kind" {
     value = var.sku_settings.kind
 }
 
-output random_module {
+output "random_module" {
     value = module.random_module.random_string
+}
+
+output "local_random_module" {
+    value = module.local_random_module.random_string
 }

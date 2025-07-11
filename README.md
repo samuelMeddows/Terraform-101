@@ -162,7 +162,7 @@ variable "enabled" {
 }
 ```
 
-#### Collection typer
+#### Collection types
 
 <u>List</u>
 
@@ -198,3 +198,157 @@ region_instant_count = {
   "us-west-2" = 8
 }
 ```
+
+<u>Set</u>
+A list a is unordered and allows duplicates where a set does not.
+variables.tf
+
+```
+variable "region_set" {
+  type = set(string)
+}
+```
+
+prod.tfavrs
+
+```
+region_set = ["us-east-1", "us-west-2"]
+```
+
+<u>Accessing the list and the map</u>
+outputs.tf
+
+```
+output "primary_region_instace" {
+    value = var.region_instant_count[var.regions[0]]
+}
+```
+
+<u>Complex Object</u>
+Gives the ability to group indivusal settings into a single object.
+variables.tf
+
+```
+variable "sku_settings"{
+  type = object({
+    kind = string
+    tier = string
+  })
+}
+```
+
+prod.tfavrs
+
+```
+sku_settings = {
+  kind = "p"
+  tier = "Business"
+}
+```
+
+outputs.tf
+
+```
+output "kind" {
+    value = var.sku_settings.kind
+}
+```
+
+### Input Variable Validation
+
+variables.tf
+
+```
+variable application_name {
+  type = string
+
+  validation {
+    condition     = length(var.application_name) > 0
+    error_message = "Application name must not be empty."
+  }
+}
+```
+
+```
+variable "instance_count" {
+  type = number
+
+  validation {
+    condition     = var.instance_count >= 5 && var.instance_count < 10 && var.instance_count % 2 != 0
+    error_message = "Must be between 5 and 10"
+  }
+}
+```
+
+### Adding comments
+
+// Application Name - single line
+\# Application Name - alt single line
+\*/
+Application Name - multiline
+/\*
+
+### Using Workspaces
+
+terraform workspace list
+terraform workspace new dev
+terraform workspace list
+
+```
+  default
+* dev
+```
+
+terraform apply -var-file env/dev.tfvars
+
+### List and Count
+
+main.tf
+
+```
+resource "random_string" "list" {
+  count = length(var.regions)
+  length  = 6
+  upper   = false
+  special = false
+}
+```
+
+### Maps for Each
+
+main.tf
+
+```
+resource "random_string" "map" {
+  for_each = var.region_instant_count
+  length  = 6
+  upper   = false
+  special = false
+}
+```
+
+### Booleans and Conditionals
+
+main.tf
+
+```
+resource "random_string" "if" {
+  count = var.enabled ? 1 : 0
+  length  = 6
+  upper  = false
+  special = false
+}
+```
+
+### Using the Terraform module registry
+
+main.tf
+
+```
+module "module" {
+  source  = "hashicorp/module/random"
+  version = "1.0.0"
+}
+```
+
+### Module Encapsulation

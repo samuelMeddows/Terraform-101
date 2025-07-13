@@ -15,20 +15,31 @@ resource "random_string" "suffix" {
 # Create local variables
 locals {
   environment_prefix = "${var.environment_name}-${var.application_name}-${random_string.suffix.result}"
+
+  regional_stamps = [
+    {
+      region = "eastus"
+      name   = "foo"
+      min_node_count = 4
+      max_node_count = 8
+    },
+    {
+      region = "westus"
+      name   = "kung"
+      min_node_count = 4
+      max_node_count = 8
+    }
+  ]
 }
 
-module "regionA" {
+module "regional_stamps" {
   source = "./modules/regional-stamp"
-  region = "eastus"
-  name   = "foo"
-  min_node_count = 4
-  max_node_count = 8
-}
 
-module "regionB" {
-  source = "./modules/regional-stamp"
-  region = "westus"
-  name   = "kung"
-  min_node_count = 4
-  max_node_count = 8
+  count = length(local.regional_stamps)
+
+
+  region          = local.regional_stamps[count.index].region
+  name            = local.regional_stamps[count.index].name
+  min_node_count  = local.regional_stamps[count.index].min_node_count
+  max_node_count  = local.regional_stamps[count.index].max_node_count
 }

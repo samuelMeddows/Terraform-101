@@ -31,5 +31,7 @@ output "kind" {
     value = var.sku_settings.kind
 }
 
-
+output "regionA" {
+    value = module.regional_stamps[0].region
+}
 

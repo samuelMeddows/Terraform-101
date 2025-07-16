@@ -351,4 +351,19 @@ module "module" {
 }
 ```
 
-### Module Encapsulation
+### Terraform Console
+
+Able to access all elements with in the terraform config from the CLI.
+
+```
+terraform console
+
+> random_string.suffix
+> random_string.suffix.result
+
+> local.environment_prefix
+> terraform console -var-file ./env/prod.tfvars
+
+> local.regional_stamps
+> local.regional_stamps.foo
+```

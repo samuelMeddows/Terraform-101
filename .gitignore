@@ -7,13 +7,13 @@
 crash.log
 *.tfplan
 
-*.tfvars
 *.tfvars.json
-
+*.exe
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+.terraform.lock.hcl
 
 .terraformrc
 terraform.rc

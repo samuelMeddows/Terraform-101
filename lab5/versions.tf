@@ -9,9 +9,10 @@ terraform {
       version = "~>3.6.3"
     }
   }
+
 }
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
-
+  features {}
   }

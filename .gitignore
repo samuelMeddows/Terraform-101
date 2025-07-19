@@ -6,6 +6,8 @@
 
 crash.log
 *.tfplan
+.debug-dev.sh
+.debug-prod.sh
 
 *.tfvars.json
 *.exe

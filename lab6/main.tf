@@ -66,6 +66,10 @@ resource "azurerm_linux_virtual_machine" "vm1" {
     azurerm_network_interface.vm1.id,
   ]
 
+  identity {
+    type = "SystemAssigned"
+  }
+
   admin_ssh_key {
     username   = "adminuser"
     public_key = tls_private_key.vm1.public_key_openssh
@@ -82,4 +86,21 @@ resource "azurerm_linux_virtual_machine" "vm1" {
     sku       = "22_04-lts"
     version   = "latest"
   }
+}
+
+resource "azurerm_virtual_machine_extension" "entra_id_login" {
+  name                 = "${azurerm_linux_virtual_machine.vm1.name}-AADSSHLogin"
+  virtual_machine_id   = azurerm_linux_virtual_machine.vm1.id
+  publisher            = "Microsoft.Azure.ActiveDirectory"
+  type                 = "AADSSHLoginForLinux"
+  type_handler_version = "1.0"
+  auto_upgrade_minor_version = true
+}
+
+data "azurerm_client_config" "current" {}
+
+resource "azurerm_role_assignment" "entra_id_user_login" {
+  scope = azurerm_linux_virtual_machine.vm1.id
+  role_definition_name = "Virtual Machine User Login"
+  principal_id = data.azurerm_client_config.current.object_id
 }

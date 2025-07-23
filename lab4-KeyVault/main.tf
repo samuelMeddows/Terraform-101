@@ -48,3 +48,5 @@ resource "azurerm_monitor_diagnostic_setting" "main" {
     category = "AllMetrics"
   }
 }
+
+
